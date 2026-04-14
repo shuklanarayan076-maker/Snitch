@@ -2,14 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from "../hook/useAuth.js";
 import { useNavigate } from 'react-router';
 
-/**
- * Login Component
- * 
- * Design Philosophy: "The Nocturnal Atelier"
- * - Deep, dark theme synchronized with the Snitch registration form.
- * - High-end fashion aesthetic with responsive backgrounds.
- * - Colors: Warm Gold (#F2B759) on Deep Forest Green (#0A4A3C / #05251E).
- */
+
 const Login = () => {
   const { handleLogin } = useAuth();
   const navigate = useNavigate();
@@ -29,16 +22,14 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
+    
       await handleLogin({
         email: formData.email,
         password: formData.password,
       });
       navigate("/");
-    } catch (error) {
-      console.error("Login failed:", error);
-    }
-  };
+    } 
+
 
   return (
     <div 
@@ -119,6 +110,7 @@ const Login = () => {
       </div>
     </div>
   );
-};
+}
+
 
 export default Login;
