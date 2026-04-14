@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
+import {useAuth} from "../hook/useAuth.js";
+import { useNavigate } from 'react-router';
 
-/**
- * Register Component (Premium Dark Fashion Edition)
- * 
- * Design Philosophy: "The Nocturnal Atelier"
- * - Deep, dark theme using the Snitch color palette.
- * - High-end, "Midnight Elite" aesthetic.
- * - Colors: Warm Gold (#F2B759) on Deep Forest Green (#0A4A3C / #05251E).
- * - Layout: Fully responsive, compact, and optimized for fashion branding.
- */
 const Register = () => {
+  const {handleRegister} = useAuth();
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     fullName: '',
     contactNumber: '',
@@ -26,10 +22,16 @@ const Register = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Registration Data:', formData);
-    // Add registration logic here
+    await handleRegister({
+      email: formData.email,
+      contact: formData.contactNumber,
+      password: formData.password,
+      fullname: formData.fullName,
+      isSeller: formData.isSeller
+    })
+    navigate("/")
   };
 
   return (
@@ -52,14 +54,14 @@ const Register = () => {
       <div className="w-[92%] max-w-md bg-[#0A4A3C] rounded-2xl p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5 relative overflow-hidden">
         
         {/* Subtle Fashion Design Element: A gold accent line at the top */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#F2B759] to-transparent opacity-80" />
+        <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-[#F2B759] to-transparent opacity-80" />
 
         <header className="mb-6 sm:mb-8 text-center">
           {/* Snitch Branding in Gold */}
           <h1 className="text-2xl sm:text-3xl font-light tracking-[0.2em] mb-2 text-[#F2B759] uppercase">
             Snitch
           </h1>
-          <p className="text-[#F2B759]/40 text-[9px] sm:text-xs font-medium uppercase tracking-[0.1em] sm:tracking-widest">
+          <p className="text-[#F2B759]/40 text-[9px] sm:text-xs font-medium uppercase tracking-widest sm:tracking-widest">
             The Fashion Elite Registry
           </p>
         </header>
@@ -67,7 +69,7 @@ const Register = () => {
         <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           {/* Full Name Field */}
           <div className="relative group">
-            <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] text-[#F2B759]/30 transition-colors group-focus-within:text-[#F2B759]">
+            <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest sm:tracking-[0.15em] text-[#F2B759]/30 transition-colors group-focus-within:text-[#F2B759]">
               Full Name
             </label>
             <input
@@ -83,7 +85,7 @@ const Register = () => {
 
           {/* Contact Number Field */}
           <div className="relative group">
-            <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] text-[#F2B759]/30 transition-colors group-focus-within:text-[#F2B759]">
+            <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest sm:tracking-[0.15em] text-[#F2B759]/30 transition-colors group-focus-within:text-[#F2B759]">
               Contact Number
             </label>
             <input
@@ -99,7 +101,7 @@ const Register = () => {
 
           {/* Email Field */}
           <div className="relative group">
-            <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] text-[#F2B759]/30 transition-colors group-focus-within:text-[#F2B759]">
+            <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest sm:tracking-[0.15em] text-[#F2B759]/30 transition-colors group-focus-within:text-[#F2B759]">
               Email
             </label>
             <input
@@ -115,7 +117,7 @@ const Register = () => {
 
           {/* Password Field */}
           <div className="relative group">
-            <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] text-[#F2B759]/30 transition-colors group-focus-within:text-[#F2B759]">
+            <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest sm:tracking-[0.15em] text-[#F2B759]/30 transition-colors group-focus-within:text-[#F2B759]">
               Password
             </label>
             <input
@@ -142,7 +144,7 @@ const Register = () => {
                 onChange={handleChange}
                 className="sr-only peer"
               />
-              <div className="w-8 h-4 sm:w-10 sm:h-5 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#faf9f7] after:rounded-full after:h-3 after:w-3 sm:after:h-4 sm:after:w-4 after:transition-all peer-checked:bg-[#F2B759]"></div>
+              <div className="w-8 h-4 sm:w-10 sm:h-5 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-[#faf9f7] after:rounded-full after:h-3 after:w-3 sm:after:h-4 sm:after:w-4 after:transition-all peer-checked:bg-[#F2B759]"></div>
             </label>
           </div>
 
