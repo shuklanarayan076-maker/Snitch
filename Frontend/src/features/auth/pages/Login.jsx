@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from "../hook/useAuth.js";
 import { useNavigate } from 'react-router';
+import ContinueWithGoogle from '../components/ContinueWithGoogle.jsx';
 
 
 const Login = () => {
@@ -102,6 +103,16 @@ const Login = () => {
               Sign In
             </button>
           </div>
+
+          {/* Divider */}
+          <div className="relative flex items-center justify-center my-4 overflow-hidden">
+            <div className="grow border-t border-white/5"></div>
+            <span className="shrink mx-4 text-[9px] text-[#F2B759]/20 uppercase tracking-widest">or continue with</span>
+            <div className="grow border-t border-white/5"></div>
+          </div>
+
+          {/* Google Sign In */}
+          <ContinueWithGoogle />
         </form>
 
         <footer className="mt-6 sm:mt-8 text-center text-[#F2B759]/20 text-[9px] sm:text-[10px] uppercase tracking-widest">
