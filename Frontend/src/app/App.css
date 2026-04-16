@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+@theme {
+  --font-manrope: "Manrope", sans-serif;
+  --font-inter: "Inter", sans-serif;
+
+  --color-brand-gold: #f2b759;
+  --color-brand-green: #0a4a3c;
+  --color-surface: #faf9f7;
+  --color-surface-high: #efeeec;
+  --color-on-surface-variant: #504537;
+  --color-outline-variant: #d4c4b1;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface-variant font-inter transition-colors duration-300;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-manrope font-extrabold tracking-tight;
+  }
+}
