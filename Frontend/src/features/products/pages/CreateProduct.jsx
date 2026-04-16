@@ -152,7 +152,7 @@ const CreateProduct = () => {
               
               <div 
                 className={`
-                  relative min-h-[300px] bg-surface-high border-2 border-dashed rounded-2xl transition-all duration-500 flex flex-col items-center justify-center p-8
+                  relative min-h-75 bg-surface-high border-2 border-dashed rounded-2xl transition-all duration-500 flex flex-col items-center justify-center p-8
                   ${isDragging 
                     ? 'border-brand-gold bg-brand-gold/5 scale-[1.02]' 
                     : 'border-outline-variant/30 hover:border-outline-variant/60'
@@ -173,7 +173,7 @@ const CreateProduct = () => {
                 ) : (
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full h-full">
                     {imagePreviews.map((preview, index) => (
-                      <div key={index} className="relative aspect-[3/4] group animate-in slide-in-from-bottom-2 duration-500 fill-mode-both" style={{animationDelay: `${index * 100}ms`}}>
+                      <div key={index} className="relative aspect-3/4 group animate-in slide-in-from-bottom-2 duration-500 fill-mode-both" style={{animationDelay: `${index * 100}ms`}}>
                         <img
                           src={preview}
                           alt={`Preview ${index}`}
@@ -192,7 +192,7 @@ const CreateProduct = () => {
                       <button
                         type="button"
                         onClick={() => fileInputRef.current.click()}
-                        className="aspect-[3/4] flex flex-col items-center justify-center bg-white/50 border-2 border-dashed border-outline-variant/20 hover:border-brand-gold hover:bg-white transition-all rounded-xl group"
+                        className="aspect-3/4 flex flex-col items-center justify-center bg-white/50 border-2 border-dashed border-outline-variant/20 hover:border-brand-gold hover:bg-white transition-all rounded-xl group"
                       >
                         <span className="text-2xl font-light text-on-surface-variant group-hover:text-brand-gold">+</span>
                       </button>
