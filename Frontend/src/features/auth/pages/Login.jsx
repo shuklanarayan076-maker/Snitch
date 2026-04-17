@@ -23,18 +23,26 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-      await handleLogin({
+    try{
+      const user = await handleLogin({
         email: formData.email,
         password: formData.password,
       });
-      navigate("/");
+      if(user.role == "buyer"){
+        navigate("/")
+      }else if(user.role == "seller"){
+        navigate("/seller/dashboard")
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+
     } 
 
 
   return (
     <div 
-      className="min-h-screen flex items-center justify-center p-4 sm:p-6 font-sans text-[#faf9f7] overflow-x-hidden bg-cover bg-center bg-no-repeat relative
+      className="min-h-screen flex items-center justify-center p-4 sm:p-6 font-sans text-surface overflow-x-hidden bg-cover bg-center bg-no-repeat relative
         bg-[url('/fashion_bg_mobile.png')] md:bg-[url('/fashion_bg_desktop.png')]"
     >
       {/* 

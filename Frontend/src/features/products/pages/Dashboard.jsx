@@ -43,7 +43,7 @@ const Dashboard = () => {
                         {sellerProducts.map((product) => (
                             <div key={product._id} className="group animate-in fade-in slide-in-from-bottom-4 duration-700">
                                 {/* Product Image Container */}
-                                <div className="relative aspect-[3/4] mb-6 overflow-hidden rounded-2xl bg-surface-high shadow-sm">
+                                <div className="relative aspect-3/4 mb-6 overflow-hidden rounded-2xl bg-surface-high shadow-sm">
                                     <img 
                                         src={product.images[0]?.url || 'https://via.placeholder.com/600x800?text=No+Image'} 
                                         alt={product.title}
@@ -85,7 +85,7 @@ const Dashboard = () => {
                 ) : (
                     /* Empty State */
                     <div className="py-24 text-center">
-                        <div className="inline-block w-24 h-24 rounded-full bg-surface-high flex items-center justify-center mb-8 border border-outline-variant/30">
+                        <div className=" w-24 h-24 rounded-full bg-surface-high flex items-center justify-center mb-8 border border-outline-variant/30">
                             <span className="text-4xl text-on-surface-variant opacity-20">?</span>
                         </div>
                         <h2 className="font-manrope text-3xl font-extrabold text-brand-green mb-4">No Registries Found</h2>
@@ -112,4 +112,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+export default Dashboard
