@@ -2,10 +2,14 @@ import React, { useEffect } from 'react';
 import { useProduct } from '../hooks/useProduct';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router';
+import { useNavigate } from 'react-router';
 
 const Home = () => {
   const { handleGetAllProducts } = useProduct();
   const products = useSelector((state) => state.product.products);
+  const navigate = useNavigate();
+
+
 
   useEffect(() => {
     handleGetAllProducts();
@@ -64,9 +68,12 @@ const Home = () => {
         </div>
 
         {products && products.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+          <div 
+         
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
             {products.map((product, index) => (
               <div 
+               onClick={()=>navigate(`/product/${product._id}`)}
                 key={product._id} 
                 className="group animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both"
                 style={{ animationDelay: `${index * 100}ms` }}
@@ -76,12 +83,14 @@ const Home = () => {
                   <img 
                     src={product.images[0]?.url || 'https://via.placeholder.com/600x800?text=No+Image'} 
                     alt={product.title}
-                    className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-in-out"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000 ease-in-out"
                   />
                   <div className="absolute inset-0 bg-brand-green/0 group-hover:bg-brand-green/5 transition-colors duration-700" />
                   
                   {/* Quick View Link (Subtle) */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div 
+                  
+                  className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                      <span className="bg-brand-gold text-brand-green px-6 py-3 rounded-full text-[9px] font-bold uppercase tracking-[0.3em] shadow-xl">
                         View Registry
                      </span>

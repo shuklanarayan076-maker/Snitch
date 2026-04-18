@@ -47,7 +47,7 @@ const Dashboard = () => {
                                     <img 
                                         src={product.images[0]?.url || 'https://via.placeholder.com/600x800?text=No+Image'} 
                                         alt={product.title}
-                                        className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-in-out"
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000 ease-in-out"
                                     />
                                     <div className="absolute inset-0 bg-brand-green/0 group-hover:bg-brand-green/5 transition-colors duration-700" />
                                     

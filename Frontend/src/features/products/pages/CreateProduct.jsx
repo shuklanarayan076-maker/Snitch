@@ -177,7 +177,7 @@ const CreateProduct = () => {
                         <img
                           src={preview}
                           alt={`Preview ${index}`}
-                          className="w-full h-full object-cover rounded-xl shadow-sm filter grayscale hover:grayscale-0 transition-all duration-700"
+                          className="w-full h-full object-cover rounded-xl shadow-sm transition-all duration-700"
                         />
                         <button
                           type="button"
