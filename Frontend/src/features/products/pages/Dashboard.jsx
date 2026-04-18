@@ -2,11 +2,15 @@ import React, { useEffect } from 'react'
 import { useProduct } from '../hooks/useProduct'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router'
+import { useNavigate } from 'react-router'
+
+
+
 
 const Dashboard = () => {
     const { handleGetSellerProduct } = useProduct()
     const sellerProducts = useSelector(state => state.product.sellerProducts)
-
+    const navigate  = useNavigate()
     useEffect(() => {
         handleGetSellerProduct()
     }, [])
@@ -39,11 +43,12 @@ const Dashboard = () => {
 
                 {/* Product Grid */}
                 {sellerProducts && sellerProducts.length > 0 ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
+                    <div  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
                         {sellerProducts.map((product) => (
-                            <div key={product._id} className="group animate-in fade-in slide-in-from-bottom-4 duration-700">
+                            <div
+                            key={product._id} className="group animate-in fade-in slide-in-from-bottom-4 duration-700">
                                 {/* Product Image Container */}
-                                <div className="relative aspect-3/4 mb-6 overflow-hidden rounded-2xl bg-surface-high shadow-sm">
+                                <div  onClick={()=>{navigate(`/seller/product/${product._id}`)}} className="relative aspect-3/4 mb-6 overflow-hidden rounded-2xl bg-surface-high shadow-sm">
                                     <img 
                                         src={product.images[0]?.url || 'https://via.placeholder.com/600x800?text=No+Image'} 
                                         alt={product.title}
